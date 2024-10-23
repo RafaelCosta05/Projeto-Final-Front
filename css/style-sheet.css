@@ -60,7 +60,6 @@ i {
 .container {
     display: flex;
     height: 100vh;
-    /* padding: 0 3rem 0 3rem; */
 }
 
 .sidebar {
