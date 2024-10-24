@@ -78,6 +78,12 @@ i {
     align-items: center;
     flex-direction: column;
     height: 8rem;
+    gap: 1rem;
+}
+
+.logo-img {
+    width: 80px;
+    height: 80px;
 }
 
 .logo h3 {
@@ -184,4 +190,37 @@ i {
 .home,
 .notifications {
     text-decoration: none;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.card {
+    background: var(--color-white);
+    border-radius: var(--border-radius-2);
+    box-shadow: 0 4px 8px rgb(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.card.reservations,
+.card.courts,
+.card.promotions,
+.card.customers {
+    height: 200px;
+}
+
+.card.statistics {
+    height: 520px;
 }
