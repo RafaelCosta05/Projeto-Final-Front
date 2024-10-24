@@ -75,7 +75,7 @@ i {
     height: 100vh;
     position: fixed;
     box-shadow: 5px 0 5px rgba(0, 0, 0, 0.1);
-    transition: all ease 300ms;
+    transition: all ease 500ms;
 }
 
 .logo {
@@ -161,7 +161,7 @@ i {
     /* width: calc(100% - 270px); */
     width: 100%;
     margin-left: 270px;
-    transition: all ease 300ms;
+    transition: all ease 500ms;
 }
 
 /* =============================
@@ -251,6 +251,7 @@ i {
     box-shadow: 0 4px 8px rgb(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
+    transition: all ease 300ms;
 }
 
 .card.reservations,
@@ -314,6 +315,10 @@ i {
     .sidebar {
         width: 110px;
     }
+
+    .logo .site-name {
+        display: none;
+    }
     
     .sidebar p{
         display: none;
@@ -323,7 +328,78 @@ i {
         margin-left: 110px;
     }
 
+    .right-header {
+        gap: 4rem;
+    }
+
+    .date-hour {
+        gap: 1.5rem;
+    }
+
     .menu-icon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 674px) {   
+    .right-header {
+        gap: 2rem;
+    }
+
+    .date-hour {
+        gap: 1rem;
+    }
+
+    .cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4rem;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(100%);
+        transition: transform ease 300ms ;
+    }
+
+    .show-sidebar {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .links-sidebar:last-child {
+        margin-top: 0;
+    }
+
+    .links-sidebar {
+        padding: 0;
+      }
+
+    .main-container {
+        margin-left: 0;
+    }
+
+    .logo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .date-hour {
+        flex-direction: column;
+    }
+
+    .date-hour i {
         display: none;
     }
 }

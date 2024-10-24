@@ -21,3 +21,13 @@ function toggleSideBar() {
 
 const menuIcon = document.querySelector('.menu-icon');
 menuIcon.addEventListener('click', toggleSideBar);
+
+
+window.addEventListener('resize', () => {
+    const sidebar = document.querySelector('.sidebar');
+    if (window.innerWidth <= 674) {
+        sidebar.classList.add('show-sidebar');
+    } else {
+        sidebar.classList.remove('show-sidebar');
+    }
+});
