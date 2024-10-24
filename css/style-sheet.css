@@ -32,6 +32,7 @@
     border: 0;
     text-decoration: none;
     box-sizing: border-box;
+    scroll-behavior: smooth !important;
 }
 
 body {
@@ -59,9 +60,11 @@ i {
 
 .container {
     display: flex;
-    height: 100vh;
 }
 
+/* =============================
+   SIDEBAR
+   ============================= */
 .sidebar {
     background: var(--color-white);
     color: var(--color-gray);
@@ -70,6 +73,8 @@ i {
     padding: 1rem 1rem;
     width: 270px;
     height: 100vh;
+    position: fixed;
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -134,19 +139,30 @@ i {
 .links-sidebar:hover span {
     color: var(--color-primary);
 }
+
+/* =============================
+   MAIN
+   ============================= */
 .main-container {
     background: var(--color-dashboard);
-    width: calc(100% - 270px);
+    /* width: calc(100% - 270px); */
+    width: 100%;
+    margin-left: 270px;
 }
 
+/* =============================
+   HEADER MAIN
+   ============================= */
 .header-content {
-    background: var(--color-primary);
-    width: 100%;
-    height: 180px;
-    padding: 2rem 2rem;
     display: flex;
     justify-content: space-between;
+    align-items: start;
+    width: 100%;
+    height: 180px;
+    padding: 3rem 2rem;
+    background: var(--color-primary);
     color: var(--color-white);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .welcome-message {
@@ -192,6 +208,9 @@ i {
     text-decoration: none;
 }
 
+/* =============================
+   DASHBOARD
+   ============================= */
 .dashboard {
     display: flex;
     flex-direction: column;
@@ -229,7 +248,7 @@ i {
 
 .card-title {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     color: var(--color-gray);
     align-items: center;
 }
@@ -254,4 +273,20 @@ i {
 
 .card-title.customers span {
     background: var(--color-blue-1);
+}
+
+.card-title.statistics span {
+    background: var(--color-warning); 
+}
+
+/* =============================
+   MEDIA QUERIES 1250
+   ============================= */
+@media screen and (max-width: 1250px) {
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 100%;
+    }
 }
