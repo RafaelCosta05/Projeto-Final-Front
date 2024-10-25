@@ -187,6 +187,7 @@ i {
 
 .menu-icon {
     font-size: var(--font-subtitle);
+    cursor: pointer;
 }
 
 .welcome-message h3 {
@@ -350,6 +351,10 @@ i {
         gap: 1rem;
     }
 
+    .date-hour i {
+        display: none;
+    }
+
     .cards {
         grid-template-columns: repeat(1, 1fr);
     }
@@ -395,11 +400,7 @@ i {
 }
 
 @media screen and (max-width: 468px) {
-    .date-hour {
-        flex-direction: column;
-    }
-
-    .date-hour i {
-        display: none;
-    }
+    .right-header {
+        gap: 1rem;
+      }
 }
