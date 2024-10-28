@@ -142,6 +142,16 @@ form {
     font-weight: 400;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .input-box i {
     position: absolute;
     right: 20px;
@@ -173,7 +183,6 @@ form {
     display: flex;
     align-items: center;
     justify-content: start;
-    /* gap: 2rem; */
 }
 
 .step-number {

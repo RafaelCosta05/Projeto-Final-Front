@@ -31,3 +31,4 @@ previousBtn.addEventListener('click', () => {
     step1.classList.remove('hidden');
     step2.classList.remove('active');
 });
+
