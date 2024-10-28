@@ -115,6 +115,12 @@ form {
     margin: 0 4px;
 }
 
+.social-icons a:hover {
+    border: 2px solid var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
 .input-box {
     position: relative;
     margin: 2rem 0;
