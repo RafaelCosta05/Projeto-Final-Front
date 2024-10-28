@@ -11,3 +11,6 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove('active');
 });
 
+window.addEventListener('load', () => {
+    document.querySelector('.container').classList.remove('no-animation');
+});

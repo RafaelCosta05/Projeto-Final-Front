@@ -35,6 +35,12 @@ body {
     background: var(--color-dashboard);
 }
 
+.no-animation .form-card,
+.no-animation .toggle-box::before,
+.no-animation .toggle-panel {
+    transition: none !important;
+}
+
 .container {
     position: relative;
     width: 850px;
