@@ -280,3 +280,13 @@ form {
         bottom: 0;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .form-card {
+        padding: 20px;
+    }
+
+    .toggle-panel h1 {
+        font-size: 30px;
+    }
+}
