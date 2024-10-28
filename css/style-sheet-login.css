@@ -146,7 +146,12 @@ form {
 }
 
 .forgot-password {
-    margin: -15px 0 -15px;
+   margin-bottom: 2rem;
+   transition: all ease 300ms;
+}
+
+.forgot-password:hover a{
+    color: var(--color-primary);
 }
 
 .forgot-password a {
@@ -201,6 +206,16 @@ form {
     align-items: center;
     z-index: 2;
     transition: .6s ease-in-out;
+}
+
+.logo-box {
+    width: 130px;
+    height: 130px;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 100%;
 }
 
 .toggle-panel.toggle-left {
