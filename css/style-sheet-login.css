@@ -295,6 +295,9 @@ input[type=number] {
     width: 130px;
     height: 130px;
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
@@ -382,6 +385,10 @@ input[type=number] {
     
     .container.active .toggle-panel.toggle-right {
         bottom: 0;
+    }
+
+    .logo-box {
+        display: none;
     }
 }
 
