@@ -45,6 +45,20 @@ body {
     overflow-x: hidden;
 }
 
+/* Defina um estilo inicial para os elementos */
+.animated {
+    opacity: 0;
+    transform: translateY(30px); /* Move para baixo */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Transição suave */
+}
+
+/* Classe que será adicionada quando o elemento estiver visível */
+.animated.visible {
+    opacity: 1; /* Totalmente visível */
+    transform: translateY(0); /* Retorna à posição original */
+}
+
+
 .container {
     display: flex;
     flex-direction: column;
@@ -73,6 +87,15 @@ body {
     align-items: center;
     background: transparent;
     padding: 2rem;
+    position: fixed;
+    transition: all ease 300ms;
+    z-index: 1000;
+}
+
+.navbar.scrolled {
+    background: var(--color-gray);
+    transition: all ease 300ms;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .icon-box img {
