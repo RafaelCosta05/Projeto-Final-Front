@@ -93,13 +93,17 @@ body {
 }
 
 .links-box a:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all ease 300ms;
     color: var(--color-primary);
 }
 
 .links-box a.active {
     border-bottom: 2px solid var(--color-white);
+}
+
+.links-box a:hover.active {
+    border-bottom: 2px solid var(--color-primary);
 }
 
 .btn-box {
@@ -118,7 +122,7 @@ body {
 }
 
 .btn-box .btn-reservation:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all ease 300ms;
     border: 2px solid var(--color-primary);
 }
