@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
+ 
 :root {
     --color-primary: #57cc99;
     --color-danger: #A50B0B;
@@ -9,7 +9,7 @@
     --color-gray: #A4A3A3;
     --color-dark: #1e1e1f;
     --color-background: #EDEAE0;
-    --color-dashboard: #c7f9dc;
+    --color-background-sec: #c7f9dc;
     --color-blue-1: #00296B;
     --color-blue-2: #00509D;
     --color-yellow: #FFD500;
@@ -21,7 +21,7 @@
     --box-shadow: 0 2rem 3rem var(--color-light);
     --font-title: 5.5rem;
     --font-subtitle: 1.5rem;
-    --font-size: 1.1rem;
+    --font-size: 1.3rem;
 }
 
 * {
@@ -43,364 +43,317 @@ body {
     background: var(--color-white);
     user-select: none;
     overflow-x: hidden;
-    color: var(--color-dark);
 }
 
-a {
-    cursor: pointer;
+@keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-250px * 7));
+    }
 }
 
-a:visited {
-    color: var(--color-white);
+.animated {
+    opacity: 0;
+    transform: translateY(30px); 
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-i {
-    font-size: 24px;
+.animated.visible {
+    opacity: 1;
+    transform: translateY(0); 
 }
+
 
 .container {
     display: flex;
-}
-
-/* =============================
-   SIDEBAR
-   ============================= */
-.sidebar {
-    background: var(--color-white);
-    color: var(--color-gray);
-    display: flex;
     flex-direction: column;
-    padding: 1rem 1rem;
-    width: 270px;
-    height: 100vh;
-    position: fixed;
-    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.1);
-    transition: all ease 500ms;
 }
 
-.logo {
+.page-top {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('../images/about/renith-r-A9VpotrPr1k-unsplash.jpg');
+    background-position-x: 0%, 0%;
+    background-position-y: 0%, 0%;
+    background-size: auto, auto;
+    background-size: cover;
+    background-position: center;
     flex-direction: column;
-    height: 10rem;
-    gap: 1rem;
-}
-
-.logo-img {
-    width: 80px;
-    height: 80px;
-}
-
-.logo .site-name {
-    font-size: 1.5rem;
-    display: flex;
-}
-
-.logo h3 span {
-    color: var(--color-primary);
-}
-
-.links-sidebar {
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.links-sidebar .box-icon {
-    border-radius: var(--border-radius-1);
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.p-sidebar {
-    font-size: 1.1rem;
-}
-
-.links-sidebar .box-icon.active {
-    border-radius: var(--border-radius-1);
-    background: var(--color-primary);
-    color: var(--color-white);
-}
-
-.links-sidebar:last-child {
-    margin-top: auto;
-}
-
-.links-sidebar:hover .box-icon.active span {
-    color: var(--color-white);
-}
-
-.links-sidebar:hover p{
-    color: var(--color-primary);
-}
-
-.links-sidebar:hover span {
-    color: var(--color-primary);
-}
-
-/* =============================
-   MIN SIDEBAR
-   ============================= */
-.sidebar.closed {
-    width: 110px;
-}
-
-.sidebar.closed p{
-    display: none;
-}
-
-/* =============================
-   MAIN
-   ============================= */
-.main-container {
-    background: var(--color-dashboard);
-    /* width: calc(100% - 270px); */
     width: 100%;
-    margin-left: 270px;
-    transition: all ease 500ms;
+    max-width: 100%;
+    height: 85vh;
 }
 
-/* =============================
-   HEADER MAIN
-   ============================= */
-.header-content {
+.navbar {
+    width: 100%;
+    height: 80px;
     display: flex;
     justify-content: space-between;
-    align-items: start;
-    width: 100%;
-    height: 180px;
-    padding: 3rem 2rem;
-    background: var(--color-primary);
-    color: var(--color-white);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.welcome-message {
-    display: flex;
     align-items: center;
-    gap: 1rem;
-}
-
-.menu-icon {
-    font-size: var(--font-subtitle);
-    cursor: pointer;
-}
-
-.welcome-message h3 {
-    font-size: 1.5rem;
-}
-
-.right-header {
-    display: flex;
-    gap: 7rem;
-    font-size: 1rem;
-}
-
-.date-hour {
-    display: flex;
-    gap: 4rem;
-}
-
-.date,
-.hour {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.date p,
-.hour p {
-    font-size: 1.1rem;
-}
-
-.home-notifications{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.home,
-.notifications {
-    text-decoration: none;
-}
-
-/* =============================
-   DASHBOARD
-   ============================= */
-.dashboard {
-    display: flex;
-    flex-direction: column;
+    background: transparent;
     padding: 2rem;
+    position: fixed;
+    transition: all ease 300ms;
+    z-index: 1000;
+}
+
+.navbar.scrolled {
+    background: var(--color-gray);
+    transition: all ease 300ms;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.icon-box img {
+    width: 50px;
+    height: 50px;
+}
+
+.links-box {
+    display: inline-flex;
+    align-items: center;
     gap: 2rem;
-    transform: translateY(-70px);
+    font-size: var(--font-size);
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    width: 100%;
-}
-
-.card {
-    background: var(--color-white);
-    border-radius: var(--border-radius-2);
-    box-shadow: 0 4px 8px rgb(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
+.links-box a {
+    color: var(--color-white);
     transition: all ease 300ms;
 }
 
-.card.reservations,
-.card.courts,
-.card.promotions,
-.card.customers {
-    height: 240px;
-    padding: 1.5rem;
+.links-box a:hover {
+    transform: scale(1.05);
+    transition: all ease 300ms;
+    color: var(--color-primary);
 }
 
-.card.statistics {
-    height: 520px;
+.links-box a.active {
+    border-bottom: 2px solid var(--color-white);
 }
 
-.card-title {
+.links-box a:hover.active {
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.btn-box {
     display: flex;
-    gap: 2rem;
-    color: var(--color-gray);
     align-items: center;
+    justify-content: center;
 }
 
-.card-title span {
-    border-radius: var(--border-radius-1);
+.btn-box .btn-reservation {
+    padding: 0.5rem 2.5rem;
+    background: transparent;
     color: var(--color-white);
-    padding: 0.5rem;
+    border: 2px solid var(--color-white);
+    border-radius: 99px;
+    text-align: center;
 }
 
-.card-title.reservations span {
-    background: var(--color-yellow);
+.btn-box .btn-reservation:hover {
+    transform: scale(1.05);
+    transition: all ease 300ms;
+    border: 2px solid var(--color-primary);
 }
 
-.card-title.courts span{
-    background: var(--color-success);
+.user-box {
+    display: inline-flex;
+    align-items: center;
+    font-size: 24px;
+    gap: 1rem;
 }
 
-.card-title.promotions  span{
-    background: var(--color-blue-2);
+.user-box i {
+    color: var(--color-white);
 }
 
-.card-title.customers span {
-    background: var(--color-blue-1);
+.bx-menu {
+    display: none;
 }
 
-.card-title.statistics span {
-    background: var(--color-warning); 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
 }
 
-/* =============================
-   MEDIA QUERIES 1250
-   ============================= */
-@media screen and (max-width: 1250px) {
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        width: 100%;
-    }
+.title-header {
+    font-size: 3rem;
+    color: var(--color-white);
 }
 
-@media screen and (max-width: 1000px) {
-    .sidebar {
-        width: 110px;
-    }
 
-    .logo .site-name {
-        display: none;
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15rem;
+}
+
+.block-title {
+    font-size: 2rem;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.block-1 {
+    padding: 10rem 10rem 0;
+}
+
+.block-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 5rem;
+}
+
+.block-content p {
+    font-size: var(--font-size);
+}
+
+.block-2 {
+    /* background: var(--color-background-sec); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 10rem;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 600px;
+}
+
+.left-column .block-2-img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+}
+
+.left-column .block-2-img.second {
+    transform: translateY(50%) translateX(-50%);
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 4rem;
+    height: 600px;
+}
+
+.right-column .block-title {
+    color: var(--color-primary);
+}
+
+.right-column .block-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.right-column .block-text .text {
+    font-size: var(--font-size);
+    color: var(--color-gray);
+}
+
+.block-3 {
+    display: flex;
+    padding: 0 10rem 10rem;
+}
+
+.slide-track {
+    display: flex;
+    animation: scroll 40s linear infinite;
+}
+
+
+.footer {
+    background:
+    linear-gradient( rgb(0, 0, 0), rgba(6, 66, 6, 0.459)),url('../images/footer/ryan-searle-qjrjJnFypa0-unsplash.jpg');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 700px;
+    width: 100%;
+    padding: 1rem;
+    position: relative;
+    z-index: 0;
+}
+
+.footer-logo img {
+    height: 100px;
+    margin-bottom: 3.5rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 90%;
+    padding: 1.5rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.borderFooter{
+    width: 70%;
+    height: 1px;
+    background-color: white;
+    margin-top: 3rem;
+}
+
+.creditos{
+    color: white;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+    .bx-menu {
+        display: flex;
     }
     
-    .sidebar p{
+    .links-box {
         display: none;
-    }
-
-    .main-container {
-        margin-left: 110px;
-    }
-
-    .right-header {
-        gap: 4rem;
-    }
-
-    .date-hour {
-        gap: 1.5rem;
-    }
-
-    .menu-icon {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 674px) {   
-    .right-header {
-        gap: 2rem;
-    }
-
-    .date-hour {
-        gap: 1rem;
-    }
-
-    .date-hour i {
-        display: none;
-    }
-
-    .cards {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .sidebar {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        z-index: 1000;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 4rem;
-        width: 100%;
-        opacity: 0;
-        visibility: hidden;
         transform: translateY(100%);
-        transition: transform ease 300ms ;
+        flex-direction: column;
+        font-size: 3rem;
+        gap: 3rem;
+        backdrop-filter: blur(20px);
     }
 
-    .show-sidebar {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+    .links-box.active {
+        display: flex;
     }
-
-    .links-sidebar:last-child {
-        margin-top: 0;
-    }
-
-    .links-sidebar {
-        padding: 0;
-      }
-
-    .main-container {
-        margin-left: 0;
-    }
-
-    .logo {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 468px) {
-    .right-header {
-        gap: 1rem;
-      }
 }
